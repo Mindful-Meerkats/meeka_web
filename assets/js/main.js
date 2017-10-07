@@ -52,7 +52,7 @@ let showNewCompliment = function() {
 let setRandomBackground = function() {
     let bgcolor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
     $('body').css('background-color', bgcolor);
-    $('li').css('background-color', bgcolor);
+    $('.head-entry').css('background-color', bgcolor);
 }
 
 let menu_state = false;
@@ -82,7 +82,7 @@ $(document).ready(function() {
     refreshTasks();
 
     // $('body').css('background-color', bgcolor);
-    $('li').css('background-color', $('body').css('background-color'));
+    $('.head_entry').css('background-color', $('body').css('background-color'));
 
     let body = $('#main');
     body.on("click",function() {
