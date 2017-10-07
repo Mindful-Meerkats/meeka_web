@@ -1,0 +1,27 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+///
+/// Identity by HTML5 UP
+/// html5up.net | @n33co
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Footer */
+
+	#footer {
+		@include vendor('align-self', 'flex-end');
+		width: 100%;
+		padding: _size(element-margin) 0 0 0;
+		color: rgba(255,255,255,0.75);
+		cursor: default;
+		text-align: center;
+		margin: 0;
+		font-size: 0.5em;
+		list-style: none;
+
+		a{
+			z-index: 3;
+		}
+	}
