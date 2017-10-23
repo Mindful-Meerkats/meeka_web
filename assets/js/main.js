@@ -2,27 +2,24 @@
 
 // Load a few standard compliments, just in case the live list reload ceases to work.
 let tasks = [];
-let links = ['#', '#', '#', '#'];
 let clickcounter = 0;
-const backgroundColors = [
-    '#5eafff',
-    '#fec422',
-    '#9cd2a6',
-    '#043f4c',
-    '#fe5f55'
-];
+const backgroundColors = {
+    Mind: '#5eafff',
+    Community: '#fec422',
+    Pawprint: '#9cd2a6',
+    Thriftiness:'#043f4c',
+    Body:'#fe5f55',
+    Happiness:'#ffb02e',
+    Soul: '#c27ba0'
+};
 const date = new Date();
 let task;
 
 let refreshTasks = function() {
 
-    $.getJSON('/task.json', function(data) {
-            //console.log(data);
-            tasks = [];
-            links = [];
-            for (var i = 0; i < data.length; i++) {
-                tasks.push(data[i]['Title']);
-                links.push(data[i]['Task']);
+    $.getJSON('https://meeka.org/task.json', function(data) {
+            for(let obj of data){
+                tasks.push(obj);
             }
             console.log('tasks list was refreshed successfully');
         })
@@ -31,21 +28,23 @@ let refreshTasks = function() {
             console.log('There was an error fetching new compliments: ' + textStatus);
         })
         .always(function() {
-            task = Math.floor(Math.random() * tasks.length);
-            showNewCompliment();
+            task = tasks[(Math.floor(Math.random() * tasks.length))];
+            showNewCompliment(task);
         });
 }
 
-let showNewCompliment = function() {
-    if (task == tasks.length - 1) task = 0;
-    setRandomBackground();
-    let newCompliment = tasks[task];
-    $('.title').text(newCompliment);
+let showNewCompliment = function(task) {
+    setAccordingBackground(task);
+    $('.title').text(task.title);
     // Set link path here
-    $('.quest').text(links[task]);
+    $('.quest').text(task.task);
 }
 
-
+let setAccordingBackground = function(task) {
+    let bgcolor = backgroundColors[task.color];
+    $('body').css('background-color', bgcolor);
+    $('.head-entry').css('background-color', bgcolor);
+}
 
 
 
@@ -80,34 +79,28 @@ $(document).ready(function() {
 
     //console.log('Index page setup');
     refreshTasks();
+    console.log(tasks)
 
     // $('body').css('background-color', bgcolor);
     $('.head_entry').css('background-color', $('body').css('background-color'));
 
     let body = $('#main');
     body.on("click",function() {
-            task = Math.floor(Math.random() * tasks.length);
-            showNewCompliment();
+            task = tasks[(Math.floor(Math.random() * tasks.length))];
+            showNewCompliment(task);
         })
     body.on("tap", function() {
-            task = Math.floor(Math.random() * tasks.length);
-            showNewCompliment();
+            task = tasks[(Math.floor(Math.random() * tasks.length))];
+            showNewCompliment(task);
         })
     body.on("swiperight", function() {
-            task++;
-            showNewCompliment();
+            task = tasks[task.id++];
+            showNewCompliment(task);
         })
     body.on("swipeleft", function() {
-            task--;
-            showNewCompliment();
+            task = tasks[task.id--];
+            showNewCompliment(task);
         });
-    // $(document).keydown(function(e) {
-    //     if (e.keyCode == 37)
-    //         task--;
-    //     else if (e.keyCode == 39)
-    //         task++;
-    //     showNewCompliment();
-    //});
     
     let menu_btn = $('#menu-opener');
     menu_btn.click(function(e) {
@@ -117,6 +110,11 @@ $(document).ready(function() {
         } else {
             menu_state = menu_close();
         }
+    });
+
+    $('.c-menu__close, .c-mask').click(function(e) {
+        e.preventDefault();
+            menu_state = menu_close();
     });
 
 });
