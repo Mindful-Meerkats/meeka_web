@@ -179,3 +179,11 @@
 		color: _palette(fg-light) !important;
 		opacity: 1.0;
 	}
+
+	.form-group {
+		height: 40;
+
+		button {
+			margin-left: 5px !important
+		}
+	}

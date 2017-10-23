@@ -8,10 +8,13 @@
 .c-menu {
   position: fixed;
   z-index: 200;
-  background-color: #67b5d1;
+  background-color: rgba(0, 0, 0, 0.3);
   -webkit-transition: -webkit-transform 0.3s;
           transition: transform 0.3s;
+  border-left: outset 2px rgba(0, 0, 0, 0.4);
 }
+
+.lol
 .c-menu > * {
   background-color: inherit;
 }
@@ -19,7 +22,11 @@
 .c-menu__items {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0
+}
+.c-menu__item:hover,
+.c-menu__close:hover {
+  background-color: rgba(183, 183, 183, 0.3);
 }
 
 /**
@@ -57,8 +64,8 @@
 .c-menu--push-right .c-menu__item {
   display: block;
   text-align: center;
-  border-top: solid 1px #b5dbe9;
-  border-bottom: solid 1px #3184a1;
+  border-top: solid 1px rgba(0, 0, 0, 0.35);
+  border-bottom: solid 1px rgba(0, 0, 0, 0.35);
 }
 .c-menu--slide-left .c-menu__item:first-child,
 .c-menu--slide-right .c-menu__item:first-child,
@@ -87,7 +94,6 @@
 .c-menu--push-left .c-menu__close,
 .c-menu--push-right .c-menu__close {
   display: block;
-  padding: 12px 24px;
   width: 100%;
 }
 
@@ -162,7 +168,6 @@ body.has-active-menu {
  */
 .c-menu__close {
   color: #fff;
-  background-color: #3184a1;
   font-size: 14px;
   border: none;
   box-shadow: none;
@@ -175,4 +180,34 @@ body.has-active-menu {
 
 .c-menu__close:focus {
   outline: none;
+}
+
+.c-menu form {
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+
+/**
+ * Mask component
+ */
+
+.c-mask {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+
+.c-mask.is-active {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }

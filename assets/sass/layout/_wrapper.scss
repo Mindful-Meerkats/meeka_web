@@ -25,6 +25,10 @@
 			z-index: 1;
 		}
 
+		> div {
+			flex: 1;
+		}
+
 		&:before {
 			content: '';
 			display: block;
