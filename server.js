@@ -33,8 +33,27 @@ server.register(require('inert'), (err) => {
     			listing: true
     		}
     	}
-    })
+    });
 });
+
+/*// database shizzle for quest fetching
+
+let options = {
+    adapter: require('k7-sequelize'),
+    connectionString: 'postgres://meeka_web:@localhost:5432/meeka_quests'
+};
+
+server.register({
+    require('k7'),
+    options:options
+}, (err)=>{
+    server.route({
+        method:'GET',
+        path:'/rquest',
+        handler: 
+    })
+
+});*/
 
 
 server.start((err)=>{
