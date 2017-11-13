@@ -37,21 +37,33 @@ server.register(require('inert'), (err) => {
 });
 
 /*// database shizzle for quest fetching
-
+const Controller = require('./src/controller/questcontroller');
 let options = {
     adapter: require('k7-sequelize'),
-    connectionString: 'postgres://meeka_web:@localhost:5432/meeka_quests'
+    connectionString: 'postgres://meeka_web:@localhost:5432/meeka_quests',
+    model: 'src/models/quest.js'
 };
 
 server.register({
-    require('k7'),
+    register: require('k7'),
     options:options
-}, (err)=>{
-    server.route({
+}, (server,err)=>{
+    const cont = new Controller(server.database);
+    server.route([{
         method:'GET',
         path:'/rquest',
-        handler: 
-    })
+        handler: cont.random
+    },
+    {
+        method: 'GET',
+        path: '/find/{id}',
+        handler: cont.find
+    },
+    {
+        method: 'GET',
+        path: '/list5',
+        handler: cont.list5
+    }]);
 
 });*/
 
