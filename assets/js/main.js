@@ -1,5 +1,5 @@
 /* GLOBAL VARIABLES */
-
+/*-----------QUEST SECTION---------------*/
 // Load a few standard compliments, just in case the live list reload ceases to work.
 let tasks = [];
 let clickcounter = 0;
@@ -17,7 +17,7 @@ let task;
 
 let refreshTasks = function() {
 
-    $.getJSON('https://meeka.org/task.json', function(data) {
+    $.getJSON('/list5', function(data) {
             for(let obj of data){
                 tasks.push(obj);
             }
@@ -28,19 +28,25 @@ let refreshTasks = function() {
             console.log('There was an error fetching new compliments: ' + textStatus);
         })
         .always(function() {
-            task = tasks[(Math.floor(Math.random() * tasks.length))];
-            showNewCompliment(task);
+            showNewCompliment();
         });
 }
 
-let showNewCompliment = function(task) {
-    setAccordingBackground(task);
+let showNewCompliment = function() {
+    task = tasks.shift();
+    $.getJSON('/rquest',function(data){
+        tasks.push(data);
+    }).done(function(){console.log("new task appended!");})
+    .fail(function(jqxhr, textStatus, error) {
+            console.log('There was an error fetching the new quest: ' + textStatus + " error:"+error);
+        });
+    setBackground(task);
     $('.title').text(task.title);
     // Set link path here
     $('.quest').text(task.task);
 }
 
-let setAccordingBackground = function(task) {
+let setBackground = function(task) {
     let bgcolor = backgroundColors[task.color];
     $('body').css('background-color', bgcolor);
     $('.head-entry').css('background-color', bgcolor);
@@ -53,6 +59,8 @@ let setRandomBackground = function() {
     $('body').css('background-color', bgcolor);
     $('.head-entry').css('background-color', bgcolor);
 }
+
+/*------ MENU SECTION------------*/
 
 let menu_state = false;
 
@@ -71,35 +79,29 @@ let menu_close = function(){
     return false;
 }
 
+/*--------HANDLER SETUP-------------*/
+
 $(document).ready(function() {
 
     let loc = (window.location.pathname.split('/').length > 0) ? window.location.pathname.split('/').reverse()[0] : '/index.html';
     if (loc == '') loc = '/';
-    //console.log(loc);
 
-    //console.log('Index page setup');
     refreshTasks();
-    console.log(tasks)
 
-    // $('body').css('background-color', bgcolor);
     $('.head_entry').css('background-color', $('body').css('background-color'));
 
     let body = $('#main');
     body.on("click",function() {
-            task = tasks[(Math.floor(Math.random() * tasks.length))];
-            showNewCompliment(task);
+            showNewCompliment();
         })
     body.on("tap", function() {
-            task = tasks[(Math.floor(Math.random() * tasks.length))];
-            showNewCompliment(task);
+            showNewCompliment();
         })
     body.on("swiperight", function() {
-            task = tasks[task.id++];
-            showNewCompliment(task);
+            showNewCompliment();
         })
     body.on("swipeleft", function() {
-            task = tasks[task.id--];
-            showNewCompliment(task);
+            showNewCompliment();
         });
     
     let menu_btn = $('#menu-opener');
