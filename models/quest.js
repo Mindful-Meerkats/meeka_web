@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataType) => {
-  var Quest = sequelize.define('Quest', {
+  var Quest = sequelize.define('quest', {
     id:{ type: DataType.INTEGER, allowNull:false, primaryKey: true},
     quest:{ type: DataType.TEXT, allowNull: true},
     title:{type: DataType.STRING, allowNull: true},
