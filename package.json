@@ -2,11 +2,21 @@
   "name": "meeka_web",
   "version": "1.0.0",
   "description": "Meeka.org website/app",
-  "main": "index.js",
+  "homepage": "https://meeka.org",
+  "bugs": {
+    "url": "https://github.com/Mindful-Meerkats/meeka_web/issues",
+    "email": "jake@meeka.org"
+  },
+  "main": "server.js",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/Mindful-Meerkats/meeka_web/"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jakob Wedemeyer, Jonas Wolterstorff",
+  "author": "Jakob Wedemeyer <jake@noodel.me>(http://jakob-wedemyer.de/)",
+  "contributors":["Jonas Wolterstorff <jonas.wolterstorff@gmail.com>"],
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
@@ -15,9 +25,7 @@
     "hoek": "^5.0.0",
     "inert": "^4.2.1",
     "joi": "^11.1.1",
-    "k7": "^1.5.0",
-    "k7-sequelize": "^1.1.0",
-    "mysql2": "^1.5.1",
+    "node-fetch": "^1.7.3",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.22.5",
