@@ -17,7 +17,7 @@ let task;
 
 let refreshTasks = function() {
 
-    $.getJSON('/list5', function(data) {
+    $.getJSON('https://quest.meeka.org/list5', function(data) {
             for(let obj of data){
                 tasks.push(obj);
             }
@@ -34,7 +34,7 @@ let refreshTasks = function() {
 
 let showNewCompliment = function() {
     task = tasks.shift();
-    $.getJSON('/rquest',function(data){
+    $.getJSON('https://quest.meeka.org/rquest',function(data){
         tasks.push(data);
     }).done(function(){console.log("new task appended!");})
     .fail(function(jqxhr, textStatus, error) {
@@ -47,7 +47,6 @@ let showNewCompliment = function() {
 }
 
 let setBackground = function(task) {
-    
     let bgcolor = backgroundColors[task.color];
     $('body').css('background-color', bgcolor);
     $('.head-entry').css('background-color', bgcolor);
