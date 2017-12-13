@@ -8,15 +8,17 @@
     "email": "jake@meeka.org"
   },
   "main": "server.js",
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/Mindful-Meerkats/meeka_web/"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mindful-Meerkats/meeka_web/"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jakob Wedemeyer <jake@noodel.me>(http://jakob-wedemyer.de/)",
-  "contributors":["Jonas Wolterstorff <jonas.wolterstorff@gmail.com>"],
+  "contributors": [
+    "Jonas Wolterstorff <jonas.wolterstorff@gmail.com>"
+  ],
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
@@ -26,9 +28,7 @@
     "inert": "^4.2.1",
     "joi": "^11.1.1",
     "node-fetch": "^1.7.3",
-    "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.22.5",
     "vision": "^4.1.1"
   },
   "devDependencies": {
@@ -37,7 +37,6 @@
     "gulp-clean-css": "^3.9.0",
     "gulp-minify": "^1.0.0",
     "gulp-sass": "^3.1.0",
-    "gulp-watch": "^4.3.11",
-    "sequelize-cli": "^3.0.0"
+    "gulp-watch": "^4.3.11"
   }
 }
