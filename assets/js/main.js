@@ -47,6 +47,7 @@ let showNewCompliment = function() {
 }
 
 let setBackground = function(task) {
+    
     let bgcolor = backgroundColors[task.color];
     $('body').css('background-color', bgcolor);
     $('.head-entry').css('background-color', bgcolor);
