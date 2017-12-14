@@ -6,7 +6,7 @@ const Hoek = require('hoek');
 
 
 const server = new Hapi.Server();
-server.connection({port:3002, host:'localhost'});
+server.connection({port:'/tmp/hapi'});
 
 
 
