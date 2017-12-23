@@ -44,14 +44,14 @@ const showNewCompliment = () => {
         tasks.push(data);
     });
     setBackground(task);
-    $('.title').text(task.title);
-    $('.quest').text(task.task);
+    document.querySelector('.title').innerHTML = task.title;
+    document.querySelector('.quest').innerHTML = task.task;
 }
 
 const setBackground = (task) => {
     let bgcolor = backgroundColors[task.color];
-    $('body').css('background-color', bgcolor);
-    $('.head-entry').css('background-color', bgcolor);
+    document.querySelector('body').background-color = bgcolor;
+    document.querySelector('.head-entry').background-color = bgcolor;
 }
 
 /*------ MENU SECTION------------*/
@@ -59,17 +59,17 @@ const setBackground = (task) => {
 let menu_state = false;
 
 const menu_open = () => {
-    $('.c-menu').addClass('is-active');
-    $('body').addClass('has-active-menu');
-    $('#wrapper').addClass('has-slide-right');
-    $('#c-mask').addClass('is-active');
+    document.querySelector('.c-menu').classList.add('is-active');
+    document.querySelector('body').classList.add('has-active-menu');
+    document.querySelector('#wrapper').classList.add('has-slide-right');
+    document.querySelector('#c-mask').classList.add('is-active');
     return true;
 }
 const menu_close = () => {
-    $('.c-menu').removeClass('is-active');
-    $('body').removeClass('has-active-menu');
-    $('#wrapper').removeClass('has-slide-right');
-    $('#c-mask').removeClass('is-active');
+    document.querySelector('.c-menu').classList.remove('is-active');
+    document.querySelector('body').classList.remove('has-active-menu');
+    document.querySelector('#wrapper').classList.remove('has-slide-right');
+    document.querySelector('#c-mask').classList.remove('is-active');
     return false;
 }
 
